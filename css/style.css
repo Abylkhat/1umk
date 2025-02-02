@@ -147,3 +147,8 @@ nav ul li a:hover {
   margin-top: 15px;
   padding: 8px 16px;
 }
+
+li#li_greeting {
+  color: rgb(51, 160, 51);
+  font-weight: bold;
+}

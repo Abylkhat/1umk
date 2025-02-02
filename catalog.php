@@ -1,11 +1,16 @@
+<?php
+session_start(); // Запуск сессии
+?>
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Каталог товаров - Интернет-магазин</title>
-  <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="css/style2.css">
 </head>
+
 <body>
   <!-- Шапка -->
   <header>
@@ -13,11 +18,17 @@
       <h1>Интернет-магазин</h1>
       <nav>
         <ul>
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="catalog.html">Каталог</a></li>
-          <li><a href="contacts.html">Контакты</a></li>
-          <li><a href="login.html">Вход</a></li>
-          <li><a href="register.html">Регистрация</a></li>
+          <li><a href="index.php">Главная</a></li>
+          <li><a href="catalog.php">Каталог</a></li>
+          <li><a href="cart.php">Корзина</a></li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <li id="li_greeting"><?php echo "Привет, " . $_SESSION['username'] . "!"; ?></li>
+            <li><a href="logout.php">Выйти?</a></li>
+          <?php else: ?>
+            <li><a href="login.html">Вход</a></li>
+            <li><a href="register.html">Регистрация</a></li>
+          <?php endif; ?>
+          </li>
         </ul>
       </nav>
     </div>
@@ -70,7 +81,6 @@
       <!-- Пагинация будет динамически подгружать страницы товаров -->
     </div>
   </section>
-
-  <script src="catalog.js"></script>
 </body>
+
 </html>

@@ -3,37 +3,32 @@ session_start(); // Запуск сессии
 ?>
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Главная - Интернет-магазин</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  
+
   <!-- Шапка -->
   <header>
     <div class="container">
       <h1>Интернет-магазин</h1>
       <nav>
         <ul>
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="catalog.html">Каталог</a></li>
-          <li><a href="#">Контакты</a></li>
-          <li>
-            <?php if (isset($_SESSION['user_id'])): ?>
-              <a href="logout.php">Выйти</a>
-              <?php echo "Hello, " . $_SESSION['username'] ?>
-            <?php else: ?>
-              <a href="login.html">Вход</a>
-            <?php endif; ?>
-          </li>
-          <li>
-          <?php if (!isset($_SESSION['user_id'])): ?>
-            <a href="register.html">Регистрация</a>
-            <?php else: ?>
-            <?php endif; ?>
-          </li>
+          <li><a href="index.php">Главная</a></li>
+          <li><a href="catalog.php">Каталог</a></li>
+          <li><a href="cart.php">Корзина</a></li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <li id="li_greeting"><?php echo "Привет, " . $_SESSION['username'] . "!"; ?></li>
+            <li><a href="logout.php">Выйти?</a></li>
+          <?php else: ?>
+            <li><a href="login.html">Вход</a></li>
+            <li><a href="register.html">Регистрация</a></li>
+          <?php endif; ?>
         </ul>
       </nav>
     </div>
@@ -99,4 +94,5 @@ session_start(); // Запуск сессии
     </div>
   </section>
 </body>
+
 </html>
