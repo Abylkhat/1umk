@@ -1,4 +1,15 @@
 /* Стиль для формы входа и регистрации */
+* {
+  margin: 1%;
+  padding: 1%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
 .auth {
   padding: 60px 0;
   display: flex;
@@ -24,7 +35,7 @@
 }
 
 .auth-form input {
-  width: 94%;
+  width: 100%;
   padding: 12px;
   margin-bottom: 20px;
   border: 1px solid #ccc;

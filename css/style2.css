@@ -74,53 +74,71 @@ nav ul li a:hover {
 
 /* Стиль для карточек товаров */
 .product-list {
-  padding: 20px 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .products {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
 }
 
 .product-card {
-  width: 200px;
+  position: relative;
+  overflow: hidden; /* Ensures the image doesn't overflow the card */
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 10px;
+  padding: 16px;
+  width: calc(25% - 20px); /* Adjust based on your layout */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Smooth transition for the card */
 }
 
 .product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+  width: 100%; /* Ensure the image fills the container */
+  height: 300px; /* Fixed height for consistency */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* Smooth transition for the image */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slightly scale up the entire card */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-card:hover img {
+  transform: scale(1.1); /* Scale up the image more than the card */
 }
 
 .product-card h3 {
-  font-size: 1.1rem;
+  font-size: 18px;
   margin: 10px 0;
 }
 
 .product-card .price {
-  font-size: 1rem;
-  color: #ff6f61;
-  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
 }
 
-.product-card .btn {
+.product-card .btn, button {
   display: inline-block;
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #ff6f61;
   color: white;
-  border-radius: 4px;
   text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
-.product-card .btn:hover {
+.product-card .btn:hover, button:hover{
   background-color: #ff4a3d;
 }
 
