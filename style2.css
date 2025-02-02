@@ -1,0 +1,143 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+/* Шапка */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Стиль для фильтра и сортировки */
+.filter {
+  padding: 20px 0;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.filter h2 {
+  margin-bottom: 20px;
+}
+
+.filter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter select, .filter button {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+/* Стиль для карточек товаров */
+.product-list {
+  padding: 20px 0;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.product-card .price {
+  font-size: 1rem;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+
+.product-card .btn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #ff6f61;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.product-card .btn:hover {
+  background-color: #ff4a3d;
+}
+
+/* Стиль для пагинации */
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.pagination .page {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+}
+
+.pagination .page:hover {
+  background-color: #ff6f61;
+  color: white;
+}

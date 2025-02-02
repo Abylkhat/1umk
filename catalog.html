@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог товаров - Интернет-магазин</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <!-- Шапка -->
+  <header>
+    <div class="container">
+      <h1>Интернет-магазин</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="login.html">Вход</a></li>
+          <li><a href="register.html">Регистрация</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Фильтр и сортировка товаров -->
+  <section class="filter">
+    <div class="container">
+      <h2>Каталог товаров</h2>
+      <form id="filter-form">
+        <select id="category-filter">
+          <option value="all">Все категории</option>
+          <option value="electronics">Электроника</option>
+          <option value="clothing">Одежда</option>
+          <option value="books">Книги</option>
+          <option value="utencils">Товары для дома</option>
+        </select>
+        <select id="sort-filter">
+          <option value="default">По умолчанию</option>
+          <option value="price-asc">Цена: по возрастанию</option>
+          <option value="price-desc">Цена: по убыванию</option>
+        </select>
+        <button type="submit">Применить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Список товаров -->
+  <section class="product-list">
+    <div class="container">
+      <div class="products">
+        <!-- Пример карточки товара -->
+        <div class="product-card">
+          <img src="img/product1.jpg" alt="Название товара">
+          <h3>Название товара</h3>
+          <p class="price">₽ 1999</p>
+          <a href="#" class="btn">Добавить в корзину</a>
+        </div>
+        <!-- Другие товары будут загружены из базы данных и выведены здесь -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Пагинация -->
+  <section class="pagination">
+    <div class="container">
+      <a href="#" class="page">1</a>
+      <a href="#" class="page">2</a>
+      <a href="#" class="page">3</a>
+      <!-- Пагинация будет динамически подгружать страницы товаров -->
+    </div>
+  </section>
+
+  <script src="catalog.js"></script>
+</body>
+</html>

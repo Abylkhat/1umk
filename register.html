@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация - Интернет-магазин</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <!-- Форма регистрации -->
+  <section class="auth">
+    <div class="container">
+      <div class="auth-form">
+        <h2>Регистрация</h2>
+        <form action="./add_user.php" method="POST">
+          <label for="register-name">Имя:</label>
+          <input type="text" name="register-name" placeholder="Введите ваше имя" required>
+          
+          <label for="register-email">Email:</label>
+          <input type="email" name="register-email" placeholder="Введите ваш email" required>
+          
+          <label for="register-password">Пароль:</label>
+          <input type="password" name="register-password" placeholder="Введите ваш пароль" required>
+          
+          <button type="submit" class="btn">Зарегистрироваться</button>
+          <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,149 @@
+/* Общие стили */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+/* Шапка */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Баннер */
+.banner {
+  background-image: url('img/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  color: black;
+  text-align: center;
+}
+
+.banner h2 {
+  font-size: 2.5rem;
+}
+
+.banner p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #ff6f61;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #ff4a3d;
+}
+
+/* Категории товаров */
+.categories {
+  padding: 40px 0;
+}
+
+.category-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.category-item {
+  text-align: center;
+  width: 20%;
+}
+
+.category-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.category-item h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* Популярные товары */
+.popular-products {
+  padding: 40px 0;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-item {
+  text-align: center;
+  width: 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-item h3 {
+  margin-top: 10px;
+}
+
+.product-item p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.product-item .btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+}
