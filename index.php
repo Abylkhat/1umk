@@ -16,23 +16,28 @@ session_start(); // Запуск сессии
   <!-- Шапка -->
   <header>
     <div class="container">
-      <h1>Интернет-магазин</h1>
-      <nav>
-        <ul>
-          <li><a href="index.php">Главная</a></li>
-          <li><a href="catalog.php">Каталог</a></li>
-          <li><a href="cart.php">Корзина</a></li>
-          <?php if (isset($_SESSION['user_id'])): ?>
-            <li id="li_greeting"><?php echo "Привет, " . $_SESSION['username'] . "!"; ?></li>
-            <li><a href="logout.php">Выйти?</a></li>
-          <?php else: ?>
-            <li><a href="login.html">Вход</a></li>
-            <li><a href="register.html">Регистрация</a></li>
-          <?php endif; ?>
-        </ul>
-      </nav>
+        <h1>Интернет-магазин</h1>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.php">Главная</a></li>
+                <li><a href="catalog.php">Каталог</a></li>
+                <li><a href="cart.php">Корзина</a></li>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li class="user-dropdown">
+                        <span id="li_greeting">Привет, <?php echo $_SESSION['username']; ?> ▼</span>
+                        <ul class="dropdown-menu">
+                            <li><a href="orders.php">Мои заказы</a></li>
+                            <li><a href="logout.php">Выйти</a></li>
+                        </ul>
+                    </li>
+                <?php else: ?>
+                    <li><a href="login.html">Вход</a></li>
+                    <li><a href="register.html">Регистрация</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
     </div>
-  </header>
+</header>
 
   <!-- Баннер -->
   <section class="banner">
@@ -75,19 +80,19 @@ session_start(); // Запуск сессии
         <div class="product-item">
           <img src="img/product1.jpg" alt="Товар 1">
           <h3>Наименование товара</h3>
-          <p>Цена: 1200₽</p>
+          <p>Цена: $549.99</p>
           <a href="#" class="btn">Купить</a>
         </div>
         <div class="product-item">
           <img src="img/product2.jpg" alt="Товар 2">
           <h3>Наименование товара</h3>
-          <p>Цена: 2400₽</p>
+          <p>Цена: $99.99</p>
           <a href="#" class="btn">Купить</a>
         </div>
         <div class="product-item">
           <img src="img/product3.jpg" alt="Товар 3">
           <h3>Наименование товара</h3>
-          <p>Цена: 3200₽</p>
+          <p>Цена: $159.99</p>
           <a href="#" class="btn">Купить</a>
         </div>
       </div>

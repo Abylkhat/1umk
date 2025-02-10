@@ -162,7 +162,60 @@ nav ul li a:hover {
   color: white;
 }
 
-li#li_greeting {
-  color: rgb(51, 160, 51);
-  font-weight: bold;
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  color: #fff;
+  background: #ff6f61;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav-menu a:hover {
+  background: #ff4a3d;
+}
+
+/* User dropdown styling */
+.user-dropdown {
+  cursor: pointer;
+  color: white;
+  padding: 10px 15px;
+  background: #ff6f61;
+  border-radius: 5px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  list-style: none;
+  padding: 10px;
+  min-width: 150px;
+}
+
+.dropdown-menu li {
+  margin: 5px 0;
+}
+
+.dropdown-menu a {
+  color: black;
+  background: none;
+  padding: 5px 10px;
+}
+
+.user-dropdown:hover .dropdown-menu {
+  display: block;
 }
