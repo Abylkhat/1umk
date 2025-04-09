@@ -1,35 +1,28 @@
 <?php
-session_start(); // Запуск сессии
-if (!isset($_SESSION['user_id'])) {
+session_start();
+
+// Check if user is logged in
+if (empty($_SESSION['user_id'])) {
     header('Location: login.html');
     exit;
 }
 
-// Database connection
 include 'connect.php';
 
-// Fetch cart items for the logged-in user
-$userId = $_SESSION['user_id'];
-$sql = "SELECT products.id, products.name, products.price, cart.quantity 
-        FROM cart 
-        JOIN products ON cart.product_id = products.id 
-        WHERE cart.user_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('i', $userId);
-$stmt->execute();
-$result = $stmt->get_result();
-
+// Fetch cart items and calculate total
+$userId = (int)$_SESSION['user_id'];
+$result = mysqli_query($conn, "SELECT p.id, p.name, p.price, c.quantity FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $userId");
 $cartItems = [];
 $totalAmount = 0;
 
-while ($row = $result->fetch_assoc()) {
+while ($row = mysqli_fetch_assoc($result)) {
     $cartItems[] = $row;
     $totalAmount += $row['price'] * $row['quantity'];
 }
 
-$stmt->close();
-$conn->close();
+mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 

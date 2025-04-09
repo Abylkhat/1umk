@@ -1,32 +1,28 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'Пользователь не авторизован']);
-    exit;
+// Check if user is logged in
+if (empty($_SESSION['user_id'])) {
+    die(json_encode(['success' => false, 'message' => 'Пользователь не авторизован']));
 }
 
-$productId = $_POST['product_id'];
-
-if (empty($productId)) {
-    echo json_encode(['success' => false, 'message' => 'Неверный ID товара']);
-    exit;
+// Validate product ID
+if (empty($_POST['product_id'])) {
+    die(json_encode(['success' => false, 'message' => 'Неверный ID товара']));
 }
 
-// Database connection
 include 'connect.php';
 
-$userId = $_SESSION['user_id'];
-$sql = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('ii', $userId, $productId);
+// Remove item from cart
+$userId = (int)$_SESSION['user_id'];
+$productId = (int)$_POST['product_id'];
 
-if ($stmt->execute()) {
-    header('Location: cart.php'); // Redirect back to the cart page
-} else {
-    echo "Ошибка при удалении товара из корзины.";
+$sql = "DELETE FROM cart WHERE user_id = $userId AND product_id = $productId";
+if (mysqli_query($conn, $sql)) {
+    header('Location: cart.php');
+    exit;
 }
 
-$stmt->close();
-$conn->close();
+echo "Ошибка при удалении товара из корзины.";
+mysqli_close($conn);
 ?>

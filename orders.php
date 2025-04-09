@@ -1,31 +1,25 @@
 <?php
-session_start(); // Запуск сессии
+session_start();
 
-// Redirect to login if the user is not logged in
-if (!isset($_SESSION['user_id'])) {
+// Check if user is logged in
+if (empty($_SESSION['user_id'])) {
     header('Location: login.html');
     exit;
 }
 
-// Database connection
 include 'connect.php';
 
-// Fetch orders for the logged-in user
-$userId = $_SESSION['user_id'];
-$sql = "SELECT id, total_amount, order_date FROM orders WHERE user_id = ? ORDER BY order_date DESC";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('i', $userId);
-$stmt->execute();
-$result = $stmt->get_result();
-
+// Fetch orders
+$userId = (int)$_SESSION['user_id'];
+$result = mysqli_query($conn, "SELECT id, total_amount, order_date FROM orders WHERE user_id = $userId ORDER BY order_date DESC");
 $orders = [];
-while ($row = $result->fetch_assoc()) {
+while ($row = mysqli_fetch_assoc($result)) {
     $orders[] = $row;
 }
 
-$stmt->close();
-$conn->close();
+mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 

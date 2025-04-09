@@ -1,5 +1,5 @@
 <?php
-session_start(); // Запуск сессии
+session_start();
 include 'connect.php';
 
 $category = $_GET['category'] ?? 'all';
@@ -7,26 +7,28 @@ $sort = $_GET['sort'] ?? 'default';
 
 // Build the SQL query
 $sql = "SELECT * FROM products";
+
+// Add category filter if needed
 if ($category !== 'all') {
     $sql .= " WHERE category_id = '$category'";
 }
+
+// Add sorting
 if ($sort === 'price-asc') {
     $sql .= " ORDER BY price ASC";
 } elseif ($sort === 'price-desc') {
     $sql .= " ORDER BY price DESC";
 }
 
-$result = $conn->query($sql);
-
 $products = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $products[] = $row;
-    }
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+    $products[] = $row;
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
