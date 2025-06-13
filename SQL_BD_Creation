@@ -1,0 +1,79 @@
+Создание таблицы “Категории товаров”
+CREATE TABLE categories (
+id int NOT NULL AUTO_INCREMENT,
+name varchar(50) NOT NULL,
+PRIMARY KEY (id)
+);
+
+
+Создание таблицы “Пользователи”
+CREATE TABLE users (
+id int NOT NULL AUTO_INCREMENT,
+username varchar(50) NOT NULL,
+password varchar(255) NOT NULL,
+email varchar(100) NOT NULL,
+created_at timestamp NOT NULL DEFAULT current_timestamp(),
+PRIMARY KEY (id),
+UNIQUE KEY username (username),
+UNIQUE KEY email (email)
+);
+
+
+Создание таблицы “Товары”
+CREATE TABLE products (
+id int NOT NULL AUTO_INCREMENT,
+category_id int NOT NULL,
+name varchar(100) NOT NULL,
+description text DEFAULT NULL,
+price decimal(10,2) DEFAULT NULL,
+image_url varchar(255) DEFAULT NULL,
+PRIMARY KEY (id),
+CONSTRAINT fk_prod_cat FOREIGN KEY (category_id) REFERENCES categories (id)
+);
+
+
+Создание таблицы “Корзина”
+CREATE TABLE cart (
+id int NOT NULL AUTO_INCREMENT,
+user_id int NOT NULL,
+product_id int NOT NULL,
+quantity int DEFAULT 1,
+PRIMARY KEY (id),
+CONSTRAINT fk_cart_users FOREIGN KEY (user_id) REFERENCES users (id),
+CONSTRAINT fk_cart_prod FOREIGN KEY (product_id) REFERENCES products (id)
+);
+
+
+Создание таблицы “Заказы”
+CREATE TABLE orders (
+id int NOT NULL AUTO_INCREMENT,
+user_id int NOT NULL,
+total_amount decimal(10,2) DEFAULT NULL,
+order_date timestamp NOT NULL DEFAULT current_timestamp(),
+PRIMARY KEY (id),
+CONSTRAINT fk_orders_users FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+	
+Добавление категорий товаров
+INSERT INTO categories (name) VALUES
+('Clothes'),
+('Electronics'),
+('Utensils'),
+('Books');
+
+
+Добавление товаров, цен и изображений в таблицу “Товары”
+INSERT INTO products (category_id, name, price, image_url) VALUES
+(1, 't-shirt', 9.99, 'images_catalog/t-shirt.png'),
+(1, 'jeans', 14.99, 'images_catalog/jeans.png'),
+(1, 'hat', 4.99, 'images_catalog/hat.png'),
+(2, 'iphone', 499.99, 'images_catalog/iphone.png'),
+(2, 'airpods', 149.99, 'images_catalog/airpods.png'),
+(2, 'ipad', 539.00, 'images_catalog/ipad.jpg'),
+(3, 'cutlery', 15.99, 'images_catalog/cutlery.jpg'),
+(3, 'whisk', 2.99, 'images_catalog/whisk.png'),
+(3, 'spatula', 3.99, 'images_catalog/spatula.png'),
+(4, 'The Master and Margarita', 9.99, 'images_catalog/TMaM.jpg'),
+(4, 'The Lord of the Rings', 9.99, 'images_catalog/TLotR.jpg'),
+(4, 'The Hunger Games', 9.99, 'images_catalog/THG.jpg');
